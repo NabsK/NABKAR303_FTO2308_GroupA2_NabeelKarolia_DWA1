@@ -1,8 +1,6 @@
-// Define the custom element
 class BookPreviewComponent extends HTMLElement {
   constructor() {
     super();
-    // Create a shadow DOM
     this.attachShadow({ mode: "open" });
   }
 
@@ -13,7 +11,6 @@ class BookPreviewComponent extends HTMLElement {
   render() {
     const { id, image, title, author } = this.dataset;
 
-    // Create HTML content for the shadow DOM
     this.shadowRoot.innerHTML = `
         <style>
         .preview {

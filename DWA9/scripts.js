@@ -22,37 +22,9 @@ function renderBooksFragment(fragment, books) {
   }
 }
 
-export const renderInitialBooks = (matches, BOOKS_PER_PAGE) => {
-  const starting = document.createDocumentFragment();
-  renderBooksFragment(starting, books.slice(0, BOOKS_PER_PAGE));
-  document.querySelector("[data-list-items]").appendChild(starting);
-  updateListControls(matches, 1, BOOKS_PER_PAGE);
-};
-renderInitialBooks();
-// function createBookPreview({ author, id, image, title }) {
-//   const element = document.createElement("button");
-//   element.classList = "preview";
-//   element.setAttribute("data-preview", id);
-
-//   element.innerHTML = `
-//     <img
-//         class="preview__image"
-//         src="${image}"
-//     />
-
-//     <div class="preview__info">
-//         <h3 class="preview__title">${title}</h3>
-//         <div class="preview__author">${authors[author]}</div>
-//     </div>
-//   `;
-
-//   return element;
-// }
-
-// html.list.items.appendChild(starting);
-
-// const bookPreviewList = document.querySelector("book-preview");
-// bookPreviewList.setMatches(matches);
+renderBooksFragment(starting, books.slice(0, BOOKS_PER_PAGE));
+document.querySelector("[data-list-items]").appendChild(starting);
+updateListControls(matches, 1, BOOKS_PER_PAGE);
 
 const genreHtml = document.createDocumentFragment();
 const firstGenreElement = document.createElement("option");
@@ -173,7 +145,7 @@ function isBookMatchingFilters(book, filters) {
     (filters.title.trim() === "" || book.title.toLowerCase().includes(filters.title.toLowerCase())) && (filters.author === "any" || book.author === filters.author) && genreMatch
   );
 }
-//from here
+//
 export const loadMoreBooks = (bookList) => {
   const fragment = document.createDocumentFragment();
   const start = bookList.page * bookList.booksPerPage;
@@ -193,7 +165,7 @@ const updateListButton = () => {
     <span class="list__remaining"> (${remaining})</span>
   `;
 };
-//here
+//
 function updateList(result) {
   page = 1;
   matches = result;
