@@ -11,6 +11,7 @@ class BookPreviewComponent extends HTMLElement {
   render() {
     const { id, image, title, author } = this.dataset;
 
+    // Create HTML content for the shadow DOM
     this.shadowRoot.innerHTML = `
         <style>
         .preview {

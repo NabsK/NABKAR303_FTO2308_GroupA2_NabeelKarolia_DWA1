@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/themes/light.css" />
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/shoelace-autoloader.js"></script>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <sl-input class="counter_value" data-key="number" readonly value="0"></sl-input>
+    <div class="counter_actions">
+
+        <sl-tooltip content="Increase the counter">
+            <sl-button variant="success" outline size="large" data-key='add' class="counter_button"
+                @click="${addHandler}">
+                <sl-icon name="caret-up"></sl-icon>
+            </sl-button>
+        </sl-tooltip>
+
+        <sl-tooltip content="Decrease the counter">
+            <sl-button variant="danger" outline size="large" data-key='subtract' class="counter_button"
+                @click="${subtractHandler}">
+                <sl-icon name="caret-down"></sl-icon>
+            </sl-button>
+        </sl-tooltip>
+
+    </div>
+
+    <sl-button variant="primary" outline size="large" data-key='reset' class="counter_button"
+        @click="${resetHandler}">Reset</sl-button>
+
+</body>
+
+</html>

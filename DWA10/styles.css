@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+[data-key="add"],
+[data-key="subtract"],
+[data-key="reset"] {
+  padding: 10px;
+}
+
+[data-key="number"] {
+  padding-bottom: 40px;
+}

@@ -22,9 +22,13 @@ function renderBooksFragment(fragment, books) {
   }
 }
 
-renderBooksFragment(starting, books.slice(0, BOOKS_PER_PAGE));
-document.querySelector("[data-list-items]").appendChild(starting);
-updateListControls(matches, 1, BOOKS_PER_PAGE);
+export const renderInitialBooks = (matches, BOOKS_PER_PAGE) => {
+  const starting = document.createDocumentFragment();
+  renderBooksFragment(starting, books.slice(0, BOOKS_PER_PAGE));
+  document.querySelector("[data-list-items]").appendChild(starting);
+  updateListControls(matches, 1, BOOKS_PER_PAGE);
+};
+renderInitialBooks();
 
 const genreHtml = document.createDocumentFragment();
 const firstGenreElement = document.createElement("option");
@@ -146,25 +150,25 @@ function isBookMatchingFilters(book, filters) {
   );
 }
 //
-export const loadMoreBooks = (bookList) => {
-  const fragment = document.createDocumentFragment();
-  const start = bookList.page * bookList.booksPerPage;
-  const end = (bookList.page + 1) * bookList.booksPerPage;
-  renderBooksFragment(fragment, bookList.matches.slice(start, end));
-  document.querySelector("[data-list-items]").appendChild(fragment);
-  bookList.page += 1;
-  updateListButton(bookList.matches, bookList.page, bookList.booksPerPage);
-};
+// export const loadMoreBooks = (bookList) => {
+//   const fragment = document.createDocumentFragment();
+//   const start = bookList.page * bookList.booksPerPage;
+//   const end = (bookList.page + 1) * bookList.booksPerPage;
+//   renderBooksFragment(fragment, bookList.matches.slice(start, end));
+//   document.querySelector("[data-list-items]").appendChild(fragment);
+//   bookList.page += 1;
+//   updateListButton(bookList.matches, bookList.page, bookList.booksPerPage);
+// };
 
-const updateListButton = () => {
-  const remaining = Math.max(0, bookList.matches.length - bookList.page * bookList.booksPerPage);
-  document.querySelector("[data-list-button]").disabled = remaining < 1;
+// const updateListButton = () => {
+//   const remaining = Math.max(0, bookList.matches.length - bookList.page * bookList.booksPerPage);
+//   document.querySelector("[data-list-button]").disabled = remaining < 1;
 
-  document.querySelector("[data-list-button]").innerHTML = `
-    <span>Show more</span>
-    <span class="list__remaining"> (${remaining})</span>
-  `;
-};
+//   document.querySelector("[data-list-button]").innerHTML = `
+//     <span>Show more</span>
+//     <span class="list__remaining"> (${remaining})</span>
+//   `;
+// };
 //
 function updateList(result) {
   page = 1;
